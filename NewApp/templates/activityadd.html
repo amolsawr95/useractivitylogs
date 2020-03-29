@@ -1,0 +1,87 @@
+{% extends 'layout.html' %} {% load widget_tweaks %} {% block title %} Add Activity {% endblock %} {% block body %}
+<section>
+	<div class="section-body">
+		<div class="row">
+			<!-- BEGIN  - FORM -->
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-head style-primary">
+						<div class="card-header">
+							<header>Add Activity Period</header>
+						</div>
+
+					</div>
+					<div class="card-body">
+						<form method="post"  role="form" enctype="multipart/form-data" method="post">{% csrf_token %}
+						<input id="adduser_id" name="adduser" type="hidden" value="{{object.id}}">
+																		
+							<div class="row">
+								<div class="col-sm-6">
+
+									<div class="form-group">
+
+										<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+											{{ formtwo.start_time }}
+											<div class="input-group-append" data-target="#datetimepicker1"
+												data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar"></i>
+
+												</div>
+											</div>
+										</div>
+										<label for="regular2">Start Time</label>
+									</div>
+									<div class="form-group">
+										<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+											{{ formtwo.end_time }}
+											<div class="input-group-append" data-target="#datetimepicker2"
+												data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar"></i>
+
+												</div>
+											</div>
+										</div>
+										<label for="regular2">End Time</label>
+									</div>
+
+								</div>
+
+
+								<div class="col-md-12">
+									<hr>
+									<div class="card-actionbar-row">
+										<input type="submit" class="btn btn-flat btn-primary ink-reaction"	value="SUBMIT">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!--end .card-body -->
+				</div>
+				<!--end .card -->
+			</div>
+			<!--end .col -->
+			<!-- END FORM - TIME ON SITE -->
+		</div>
+		<!--end .row -->
+	</div>
+	<!--end .section-body -->
+</section>
+
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'YYYY-MM-DD HH:mm:ss',
+	  formatSubmit: 'yyyy-mm-dd HH:mm:ss',
+    });
+  });
+</script>
+<script>
+  $(function () {
+    $("#datetimepicker2").datetimepicker({
+      format: 'YYYY-MM-DD HH:mm',
+	  formatSubmit: 'yyyy-mm-dd HH:mm:ss',
+    });
+  });
+</script>
+{% endblock %}
