@@ -15,7 +15,7 @@ class NewUser(models.Model):
         verbose_name = ("NewUser")
         verbose_name_plural = ("NewUsers")
 
-
+#Gets All activityPeriod Object with relationship user
     @property
     def activity_periods(self):
         return self.activityperiod_set.all() 

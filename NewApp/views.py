@@ -7,11 +7,12 @@ from .forms import NewUserForm,ActivityPeriodForm
 from django.urls import reverse
  
 # Create your views here.
-
+#All User Objects
 def index(request):
     new_user = NewUser.objects.all()
     return render(request, 'index.html', {'new_user': new_user})
 
+# Create New User
 
 def newuser(request):
     if request.POST:
@@ -24,6 +25,8 @@ def newuser(request):
     else:
         form = NewUserForm()
         return render(request, 'new.html', {'form': form})
+
+#Create activity
 
 def activity_add (request,id):
     object = get_object_or_404(NewUser, id=id)
@@ -44,5 +47,6 @@ def activity_add (request,id):
 
 def activity_log(request,id):
     object = get_object_or_404(NewUser, pk=id)
+    #Gets all activity objects from id 
     activity = object.activityperiod_set.all()
     return render(request,'activitylog.html',{'object':object,'activity':activity})
